@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Link Generator</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <img src="/whatsapp.svg" alt="WhatsApp" class="logo" />
+        <h1>WhatsApp Link Generator</h1>
+        <p class="tagline">Create a click-to-chat link in seconds</p>
+      </header>
+
+      <main>
+        <div class="form-group">
+          <label for="country">Country Code</label>
+          <select id="country">
+            <option value="">Select country</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <div class="phone-input">
+            <span id="dial-code" class="dial-code"></span>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="e.g. 512345678"
+              autocomplete="tel-national"
+            />
+          </div>
+          <p id="phone-error" class="error" hidden>Please enter a valid phone number (digits only, at least 6 characters).</p>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Pre-filled Message <span class="optional">(optional)</span></label>
+          <textarea
+            id="message"
+            rows="3"
+            placeholder="e.g. Hi, I'd like to know more about your services."
+          ></textarea>
+        </div>
+
+        <button id="generate" type="button">Generate Link</button>
+
+        <div id="result" class="result" hidden>
+          <label>Your WhatsApp Link</label>
+          <div class="link-box">
+            <a id="link-output" href="#" target="_blank" rel="noopener"></a>
+          </div>
+          <button id="copy" type="button" class="copy-btn">Copy Link</button>
+        </div>
+      </main>
+
+      <footer>
+        <p>No data is sent anywhere. Everything runs in your browser.</p>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

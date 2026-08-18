@@ -1,0 +1,211 @@
+:root {
+  --wa-green: #25D366;
+  --wa-dark: #075E54;
+  --wa-teal: #128C7E;
+  --wa-light: #DCF8C6;
+  --bg: #f0f2f5;
+  --card: #ffffff;
+  --text: #111b21;
+  --muted: #667781;
+  --border: #e0e0e0;
+  --radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+#app {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header .logo {
+  width: 64px;
+  height: 64px;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--wa-dark);
+}
+
+header .tagline {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+main {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+select,
+input,
+textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: var(--wa-teal);
+}
+
+select {
+  cursor: pointer;
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dial-code {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--wa-dark);
+  min-width: 3.5rem;
+  text-align: center;
+  padding: 0.6rem 0;
+  background: var(--bg);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+}
+
+.phone-input input {
+  flex: 1;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+button {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#generate {
+  background: var(--wa-green);
+  color: #fff;
+}
+
+#generate:hover {
+  background: #20bd5a;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.link-box {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  word-break: break-all;
+}
+
+.link-box a {
+  color: var(--wa-teal);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.link-box a:hover {
+  text-decoration: underline;
+}
+
+.copy-btn {
+  background: var(--wa-dark);
+  color: #fff;
+}
+
+.copy-btn:hover {
+  background: #054c44;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
