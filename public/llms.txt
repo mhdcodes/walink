@@ -1,0 +1,32 @@
+# WhatsApp Link Generator
+
+> Free, client-side tool to create WhatsApp click-to-chat (wa.me) links with an optional pre-filled message. No signup, no tracking — all logic runs in the browser.
+
+Site: https://walink.codiume.com/
+
+## What it does
+
+Given a country code, a phone number, and an optional message, the tool builds a WhatsApp click-to-chat link that opens a chat with that number — without requiring the number to be saved as a contact.
+
+## How to construct a wa.me link (for agents)
+
+Format:
+
+```
+https://wa.me/<number>?text=<url-encoded message>
+```
+
+- `<number>`: full international format, digits only — country code followed by the national number. No `+`, spaces, dashes, or leading zeros of the national number. Example: `966512345678`.
+- `text` (optional): the pre-filled chat message, percent-encoded (e.g. `Hello%20there`).
+
+Example:
+
+```
+https://wa.me/966512345678?text=Hi%2C%20I%27d%20like%20to%20know%20more
+```
+
+## Technical notes
+
+- Single-page static site built with Vite; no backend and no API calls.
+- Entry point: `/index.html`; logic: `/src/main.js`.
+- Source of country dial codes: `/src/countries.js`.
