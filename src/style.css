@@ -77,6 +77,10 @@ main {
   gap: 0.4rem;
 }
 
+.iti {
+  width: 100%;
+}
+
 label {
   font-weight: 600;
   font-size: 0.85rem;
@@ -110,28 +114,6 @@ textarea:focus {
 
 select {
   cursor: pointer;
-}
-
-.phone-input {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.dial-code {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--wa-dark);
-  min-width: 3.5rem;
-  text-align: center;
-  padding: 0.6rem 0;
-  background: var(--bg);
-  border-radius: var(--radius);
-  border: 1.5px solid var(--border);
-}
-
-.phone-input input {
-  flex: 1;
 }
 
 .error {

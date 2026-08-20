@@ -1,37 +1,18 @@
 import "./style.css";
-import { countries } from "./countries.js";
+import intlTelInput from "intl-tel-input";
+import "intl-tel-input/styles";
 
-const countrySelect = document.getElementById("country");
-const dialCode      = document.getElementById("dial-code");
-const phoneInput    = document.getElementById("phone");
-const phoneError    = document.getElementById("phone-error");
-const messageInput  = document.getElementById("message");
-const generateBtn   = document.getElementById("generate");
-const resultDiv     = document.getElementById("result");
-const linkOutput    = document.getElementById("link-output");
-const copyBtn       = document.getElementById("copy");
+const phoneInput  = document.getElementById("phone");
+const phoneError  = document.getElementById("phone-error");
+const messageInput = document.getElementById("message");
+const generateBtn = document.getElementById("generate");
+const resultDiv   = document.getElementById("result");
+const linkOutput  = document.getElementById("link-output");
+const copyBtn     = document.getElementById("copy");
 
-countries.forEach((c) => {
-  const opt = document.createElement("option");
-  opt.value = c.code;
-  opt.textContent = `${c.name} (+${c.dial})`;
-  countrySelect.appendChild(opt);
+const iti = intlTelInput(phoneInput, {
+  loadUtils: () => import("intl-tel-input/utils"),
 });
-
-countrySelect.addEventListener("change", () => {
-  const selected = countries.find((c) => c.code === countrySelect.value);
-  dialCode.textContent = selected ? `+${selected.dial}` : "";
-  phoneInput.focus();
-  phoneError.hidden = true;
-});
-
-function cleanPhone(raw) {
-  return raw.replace(/\D/g, "");
-}
-
-function isValidPhone(digits) {
-  return digits.length >= 6 && digits.length <= 15;
-}
 
 function buildLink(phoneDigits, message) {
   let url = `https://wa.me/${phoneDigits}`;
@@ -42,23 +23,15 @@ function buildLink(phoneDigits, message) {
 }
 
 generateBtn.addEventListener("click", () => {
-  const selected = countries.find((c) => c.code === countrySelect.value);
-  if (!selected) {
-    phoneError.textContent = "Please select a country code.";
-    phoneError.hidden = false;
-    return;
-  }
-
-  const digits = cleanPhone(phoneInput.value);
-  if (!isValidPhone(digits)) {
-    phoneError.textContent = "Please enter a valid phone number (digits only, at least 6 characters).";
+  if (!iti.isValidNumber()) {
+    phoneError.textContent = "Please select a country and enter a valid phone number.";
     phoneError.hidden = false;
     return;
   }
 
   phoneError.hidden = true;
-  const fullNumber = selected.dial + digits.replace(/^0+/, "");
-  const link = buildLink(fullNumber, messageInput.value);
+  const digits = iti.getNumber().replace(/\D/g, "");
+  const link = buildLink(digits, messageInput.value);
 
   linkOutput.href = link;
   linkOutput.textContent = link;

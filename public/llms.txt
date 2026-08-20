@@ -29,4 +29,4 @@ https://wa.me/966512345678?text=Hi%2C%20I%27d%20like%20to%20know%20more
 
 - Single-page static site built with Vite; no backend and no API calls.
 - Entry point: `/index.html`; logic: `/src/main.js`.
-- Source of country dial codes: `/src/countries.js`.
+- Country selector and phone validation: intl-tel-input library (bundled locally, lazy-loaded utils chunk).
